@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pellinuz API Website</title>
+	<style>
+		body {
+			background: "https://test.pellinuz.repl.co/searchbar1/1108136.jpg";
+			background-size: cover;
+			background-position: center;
+		}
+		#searchbar{
+			margin-left: 15%;
+			padding:15px;
+			border-radius: 10px;
+		}
+
+		input[type=text] {
+			width: 30%;
+			-webkit-transition: width 0.15s ease-in-out;
+			transition: width 0.15s ease-in-out;
+		}
+
+/* When the input field gets focus,
+		change its width to 100% */
+		input[type=text]:focus {
+			width: 70%;
+		}
+
+		#list{
+			font-size: 1.5em;
+			margin-left: 90px;
+		}
+
+		.list{
+			display: list-item;	
+		}
+
+		a {
+			text-decoration: none;	
+			color: black;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="searchbar">
+	<input id="searchbar" onkeyup="search_commands()" type="text" name="search" placeholder="Search command here..">
+
+		<ol id='list'>
+			<li class="commands"><a href="/api?type=genshin">Genshin impact</a></li>
+			<li class="commands"><a href="/api?type=overwatch">Overwatch</a></li>
+			<li class="commands"><a href="/api?type=fortnite">Fortnite</a></li>
+			<li class="commands"><a href="/api?type=minecraft">Minecraft</a></li>
+			<li class="commands"><a href="/api?type=pokemon">Pokémon</a></li>
+		</ol>
+	</div>
+	<script>
+		function search_commands() {
+			let input = document.getElementById('searchbar').value
+			input=input.toLowerCase();
+			let x = document.getElementsByClassName('commands');
+	
+			for (i = 0; i < x.length; i++) {
+				if (!x[i].innerHTML.toLowerCase().includes(input)) {
+					x[i].style.display="none";
+				}
+				else {
+					x[i].style.display="list-item";				
+				}
+			}
+		}
+	</script>
+</body>
+</html>
